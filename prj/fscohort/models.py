@@ -8,4 +8,4 @@ class Student(models.Model):
     number = models.IntegerField()
 
     def __str__(self):
-        return str(self.number)
+        return self.first_name
