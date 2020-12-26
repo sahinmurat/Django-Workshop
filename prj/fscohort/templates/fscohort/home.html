@@ -8,6 +8,15 @@
 </head>
 
 <body>
+    <form action='http://google.com' method="GET">
+        <input type="text"  name ='title' placeholder="TTIItle" />
+        <input type="submit"  value='search' />
+    </form>
+
+    <form action="." method="GET">
+        {{ student }}
+    </form>
+
     <h1>Hello, this is home page.</h1>
     {{ title|safe }} <br>
     {{ dict_1 }} <br>
