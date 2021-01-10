@@ -1,33 +1,46 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import JsonResponse
 from fscohort.models import Student
+from django.core.serializers import serialize
 
-# Create your views here.
+
 def home_api(request):
     data = {
-        'name': 'Henry',
-        'adress': 'clarusway.igersheim',
-        'skills': ['python', 'django']
+        "name": "henry",
+        "address": "clarusway.com",
+        "skills": ["python", "django"]
     }
-    
     return JsonResponse(data)
 
+
+# def student_list_api(request):
+#     if request.method == "GET":
+#         students = Student.objects.all()
+#         student_count = Student.objects.count()
+
+#         student_list = []
+#         for student in students: # mevlüt, henry
+#             student_list.append({
+#                 "fisrtname": student.first_name,
+#                 "lastname": student.last_name,
+#                 "number": student.number
+#             })
+#         print(student_list)
+
+#         data = {
+#             "students": student_list,
+#             "count": student_count
+#         }
+#         return JsonResponse(data)
+
 def student_list_api(request):
-    if request.method == 'GET':
+    if request.method == "GET":
         students = Student.objects.all()
         student_count = Student.objects.count()
-        
-        student_list = []
-        for student in students:
-            student_list.append({
-                'first_name':student.first_name,
-                'last_name': student.first_name,
-                'number': student.number,
-            })
-            
+        student_data = serialize("python", students)
+        print(student_data)
         data = {
-           'students': student_list,
-            'count': student_count
+            "students": student_data,
+            "count": student_count
         }
-        
         return JsonResponse(data)
