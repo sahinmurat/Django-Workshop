@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
      'fscohort',
-     'fscohort_api'
+     'fscohort_api',
+     'rest_framework'
 ]
 
 MIDDLEWARE = [
