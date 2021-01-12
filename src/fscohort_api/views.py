@@ -160,3 +160,13 @@ class StudentGetUpdateDelete(APIView):
         student.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
             
+
+class StudentList(generics.ListAPIView):
+    serializer_class = StudentSerializer
+    queryset = Student.objects.all()
+    
+class StudentCreate(generics.CreateAPIView):
+    serializer_class = StudentSerializer
+    queryset = Student.objects.all()
+    
+    
